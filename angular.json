@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/atenea",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -29,21 +30,15 @@
             ]
           },
           "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
+           "production": {
+                "budgets": [
+                  { "type": "initial", "maximumWarning": "500kB", "maximumError": "1MB" },
+                  { "type": "anyComponentStyle", "maximumWarning": "4kB", "maximumError": "8kB" }
+                ],
+                "outputHashing": "all",
+                "serviceWorker": "ngsw-config.json",
+                "baseHref": "/atenea/"
+            },  
             "development": {
               "optimization": false,
               "extractLicenses": false,
@@ -85,6 +80,9 @@
               "src/styles.css"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
